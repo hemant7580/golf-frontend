@@ -1,7 +1,7 @@
 /**
  * API base: use VITE_API_URL in production (full backend URL). Dev uses Vite proxy → relative /api.
  */
-const base = import.meta.env.VITE_API_URL || '';
+const base = "https://bcakendsingh.onrender.com";
 
 function authHeaders(token) {
   return token ? { Authorization: `Bearer ${token}` } : {};
