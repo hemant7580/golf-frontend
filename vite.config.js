@@ -7,7 +7,7 @@ import react from '@vitejs/plugin-react';
  */
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const target = env.VITE_DEV_API_PROXY || 'http://localhost:4000';
+  const target = "https://bcakendsingh.onrender.com";
 
   return {
     plugins: [react()],
