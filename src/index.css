@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    min-height: 100%;
+    /* Fallback if JS/layout delayed — matches GlobalBackground base */
+    background: linear-gradient(168deg, #fcfbfa 0%, #eef6f1 45%, #f4f0e8 100%);
+  }
+  body {
+    margin: 0;
+    min-height: 100%;
+    @apply text-slate-900 antialiased bg-transparent;
+  }
+}
+
+@layer components {
+  /* Variants (focus:, hover:, etc.) are not reliable inside @apply — use plain CSS below. */
+  .input-ds {
+    @apply w-full rounded-2xl border border-slate-200/90 bg-white/95 px-4 py-3.5 text-sm text-slate-800 shadow-sm transition duration-200 outline-none;
+  }
+  .input-ds::placeholder {
+    color: theme('colors.slate.400');
+  }
+  .input-ds:focus {
+    border-color: theme('colors.gold.DEFAULT');
+    box-shadow: 0 0 0 2px color-mix(in srgb, theme('colors.gold.DEFAULT') 25%, transparent);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full bg-gradient-to-r from-fairway to-fairway-light px-6 py-3 text-sm font-semibold text-white transition duration-300 disabled:pointer-events-none disabled:opacity-50;
+    box-shadow: theme('boxShadow.lift');
+  }
+  .btn-primary:hover:not(:disabled) {
+    transform: scale(1.02);
+    box-shadow: theme('boxShadow.glow');
+  }
+  .btn-primary:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full border border-slate-200/80 bg-white/90 px-6 py-3 text-sm font-semibold text-fairway shadow-sm backdrop-blur transition duration-200;
+  }
+  .btn-secondary:hover {
+    border-color: color-mix(in srgb, theme('colors.gold.DEFAULT') 50%, white);
+    @apply bg-white;
+  }
+
+  .btn-ghost {
+    @apply rounded-full px-4 py-2 text-sm font-medium text-slate-600 transition;
+  }
+  .btn-ghost:hover {
+    @apply bg-white/60 text-fairway;
+  }
+
+  .badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wider;
+    border: 1px solid color-mix(in srgb, theme('colors.gold.DEFAULT') 30%, transparent);
+    background-color: color-mix(in srgb, theme('colors.gold.DEFAULT') 10%, transparent);
+    color: theme('colors.gold.dark');
+  }
+
+  .page-shell {
+    @apply relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+}
